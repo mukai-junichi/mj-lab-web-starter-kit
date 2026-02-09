@@ -1,0 +1,21 @@
+@use "../tokens" as *;
+
+h1, h2, h3 {
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.c-skip-link {
+  position: absolute;
+  top: -100px;
+  left: $space-sm;
+  padding: $space-xs $space-sm;
+  background: $color-text;
+  color: $color-white;
+  font-size: 0.875rem;
+  z-index: 10000;
+  transition: top 0.2s;
+  &:focus {
+    top: $space-sm;
+  }
+}

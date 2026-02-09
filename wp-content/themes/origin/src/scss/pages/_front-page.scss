@@ -1,0 +1,46 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+.p-front-hero {
+  padding: $space-xl 0;
+  text-align: center;
+  &__title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: $space-sm;
+  }
+  &__desc {
+    color: rgba($color-text, 0.8);
+    font-size: 1.125rem;
+  }
+}
+
+.p-front-content {
+  &__body {
+    max-width: 720px;
+    margin: 0 auto;
+    p { margin-bottom: $space-sm; }
+  }
+}
+
+.p-archive {
+  padding: $space-md 0;
+}
+
+.p-404 {
+  padding: $space-xl 0;
+  text-align: center;
+  &__title {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: $space-sm;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

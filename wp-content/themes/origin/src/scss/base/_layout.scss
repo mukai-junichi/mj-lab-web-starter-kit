@@ -1,0 +1,45 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+.l-container {
+  @include container;
+}
+
+.l-header {
+  border-bottom: $border-width solid $color-text;
+  padding: $space-sm $space-md;
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__logo a {
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  &__menu {
+    display: flex;
+    list-style: none;
+    gap: $space-md;
+    a:hover { text-decoration: underline; }
+  }
+}
+
+.l-main {
+  min-height: 60vh;
+  padding: $space-lg 0;
+}
+
+.l-footer {
+  border-top: $border-width solid rgba($color-text, 0.2);
+  padding: $space-md $space-md;
+  &__inner {
+    @include container;
+    text-align: center;
+  }
+  &__copy {
+    font-size: 0.875rem;
+    color: rgba($color-text, 0.7);
+  }
+}

@@ -1,0 +1,43 @@
+# MJ-Lab Web Starter Kit - Docker Compose
+# Windows / Mac 両対応。このディレクトリで docker-compose up を実行してください。
+
+services:
+  db:
+    image: mysql:5.7
+    platform: linux/amd64
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-wordpress}
+      MYSQL_USER: ${MYSQL_USER:-wp}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-wppass}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  wordpress:
+    image: wordpress:latest
+    platform: linux/amd64
+    volumes:
+      # ベーステーマをコンテナ内のテーマディレクトリにマウント
+      - ./wp-content/themes/origin:/var/www/html/wp-content/themes/origin
+      - ./php/php.ini:/usr/local/etc/php/conf.d/99-mjlab.ini
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-wordpress}
+      WORDPRESS_DB_USER: ${MYSQL_USER:-wp}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-wppass}
+      WORDPRESS_DEBUG: "0"
+
+volumes:
+  db_data:

@@ -1,0 +1,15 @@
+{
+  "name": "origin-theme",
+  "version": "1.0.0",
+  "description": "Origin Theme - Vite + SCSS",
+  "private": true,
+  "scripts": {
+    "dev": "node -e \"require('fs').writeFileSync('.vite-dev','')\" && vite",
+    "watch": "VITE_WATCH=1 vite build --watch",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0",
+    "vite": "^6.0.0"
+  }
+}

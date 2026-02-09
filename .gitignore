@@ -1,0 +1,23 @@
+# Environment
+.env
+.env.local
+*.log
+
+# WordPress (if you download core into project)
+/wordpress/core/
+/wp-config.php
+
+# Theme: dependencies & build
+wp-content/themes/origin/node_modules/
+wp-content/themes/origin/.vite-dev
+wp-content/themes/origin/package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

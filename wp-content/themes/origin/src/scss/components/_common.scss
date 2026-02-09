@@ -1,0 +1,27 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+.c-card {
+  padding: $space-md 0;
+  border-bottom: 1px solid rgba($color-text, 0.1);
+  &__title {
+    font-size: 1.125rem;
+    margin-bottom: $space-xs;
+    a:hover { text-decoration: underline; }
+  }
+}
+
+.c-button {
+  display: inline-block;
+  padding: $space-sm $space-lg;
+  background: $color-brand-primary;
+  color: $color-text;
+  font-weight: 700;
+  border: $border-width solid $color-text;
+  transition: $transition-base;
+  &:hover {
+    opacity: 0.9;
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 $color-text;
+  }
+}
